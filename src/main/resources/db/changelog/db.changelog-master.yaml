@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: THEGYM/master.yaml
+      relativeToChangelogFile: true
