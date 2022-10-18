@@ -31,8 +31,16 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void edit(UserDto userDto, Boolean isNewSubscription) {
+
+    }
+
     public List<UserDto> findAll() {
         return userRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    public List<User> findAllEntities() {
+        return userRepository.findAll();
     }
 
     public void remove(List<UUID> userIds) {

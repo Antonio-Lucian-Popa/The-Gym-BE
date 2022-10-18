@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -19,6 +20,11 @@ public class UserController {
     @PostMapping(path = "/create")
     public void create(@RequestBody CreateUserDto createUserDto) {
         userService.create(createUserDto);
+    }
+
+    @PutMapping(path = "/edit/{isNewSubscription}")
+    public void remove(@RequestBody UserDto userDto, @PathVariable(name = "isNewSubscription") Optional<Boolean> isNewSubscription) {
+        userService.edit(userDto, isNewSubscription);
     }
 
     @GetMapping(path = "/findAll")

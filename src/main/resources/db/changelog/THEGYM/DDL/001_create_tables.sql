@@ -14,3 +14,12 @@ phone_number VARCHAR(50) NOT NULL,
 subscription DATE,
 number_of_months_payed INTEGER NOT NULL,
 );
+
+create table if not exists notifications (
+id uuid NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
+title VARCHAR(50) NOT NULL,
+description VARCHAR(50) NOT NULL,
+is_new BOOLEAN NOT NULL,
+created_at DATE NOT NULL,
+userId uuid NOT NULL,
+);
