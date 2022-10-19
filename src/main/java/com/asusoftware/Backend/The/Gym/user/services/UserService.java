@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public class UserService {
         user.setFirstName(createUserDto.getFirstName());
         user.setLastName(createUserDto.getLastName());
         user.setBirthday(createUserDto.getBirthday());
+        user.setEmail(createUserDto.getEmail());
         user.setPhoneNumber(createUserDto.getPhoneNumber());
         user.setSubscription(LocalDateTime.now(ZoneOffset.UTC));
         user.setProfileImageId(UUID.randomUUID());
@@ -31,8 +33,25 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void edit(UserDto userDto, Boolean isNewSubscription) {
-
+    public void edit(UserDto userDto, Optional<Boolean> isNewSubscription) {
+        User user = userRepository.findById(userDto.getId()).orElse(null);
+      if(isNewSubscription.isPresent() && user != null) {
+              user.setFirstName(userDto.getFirstName());
+              user.setLastName(userDto.getLastName());
+              user.setBirthday(userDto.getBirthday());
+              user.setEmail(userDto.getEmail());
+              user.setPhoneNumber(userDto.getPhoneNumber());
+              user.setSubscription(LocalDateTime.now(ZoneOffset.UTC));
+              user.setNumberOfMonthsPayed(userDto.getNumberOfMonthsPayed());
+      } else if(user != null) {
+          user.setFirstName(userDto.getFirstName());
+          user.setLastName(userDto.getLastName());
+          user.setBirthday(userDto.getBirthday());
+          user.setEmail(userDto.getEmail());
+          user.setPhoneNumber(userDto.getPhoneNumber());
+          user.setNumberOfMonthsPayed(userDto.getNumberOfMonthsPayed());
+      }
+      userRepository.save(user);
     }
 
     public List<UserDto> findAll() {

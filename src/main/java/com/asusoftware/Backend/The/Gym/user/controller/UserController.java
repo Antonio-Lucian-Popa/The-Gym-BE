@@ -22,8 +22,9 @@ public class UserController {
         userService.create(createUserDto);
     }
 
-    @PutMapping(path = "/edit/{isNewSubscription}")
-    public void remove(@RequestBody UserDto userDto, @PathVariable(name = "isNewSubscription") Optional<Boolean> isNewSubscription) {
+    @PutMapping(path = "/edit")
+    public void remove(@RequestBody UserDto userDto, @RequestParam(name = "isNewSubscription") Optional<Boolean> isNewSubscription) {
+        System.out.println(isNewSubscription);
         userService.edit(userDto, isNewSubscription);
     }
 

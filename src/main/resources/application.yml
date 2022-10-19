@@ -3,7 +3,7 @@ spring:
     multipart:
       max-file-size: 50MB
   datasource:
-    url: jdbc:postgresql://localhost:5432/theGym
+    url: jdbc:postgresql://localhost:5432/thegym
     # driverClassName: org.h2.Driver
     username: postgres
     password: password
