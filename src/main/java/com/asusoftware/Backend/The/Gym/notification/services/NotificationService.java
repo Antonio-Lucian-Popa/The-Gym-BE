@@ -59,7 +59,7 @@ public class NotificationService {
 
     public void updateAllNotifications() {
         // TODO: da rivedere
-       List<Notification> notifications = notificationRepository.findAll().stream().peek(notification -> notification.setNew(false)).toList();
+       List<Notification> notifications = notificationRepository.findAll().stream().peek(notification -> notification.setNew(false)).collect(Collectors.toList());
        notificationRepository.saveAll(notifications);
     }
 
