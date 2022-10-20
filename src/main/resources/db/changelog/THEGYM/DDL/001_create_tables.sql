@@ -13,6 +13,7 @@ birthday DATE,
 phone_number VARCHAR(50) NOT NULL,
 subscription DATE,
 number_of_months_payed INTEGER NOT NULL,
+end_subscription DATE,
 );
 
 create table if not exists notifications (

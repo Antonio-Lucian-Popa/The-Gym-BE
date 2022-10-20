@@ -44,4 +44,7 @@ public class User {
 
     @Column(name = "number_of_months_payed", nullable = false)
     private int numberOfMonthsPayed;
+
+    @Column(name = "end_subscription", nullable = false)
+    private LocalDateTime endSubscription;
 }

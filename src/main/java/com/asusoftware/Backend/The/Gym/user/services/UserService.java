@@ -7,6 +7,7 @@ import com.asusoftware.Backend.The.Gym.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -30,7 +31,16 @@ public class UserService {
         user.setSubscription(LocalDateTime.now(ZoneOffset.UTC));
         user.setProfileImageId(UUID.randomUUID());
         user.setNumberOfMonthsPayed(createUserDto.getNumberOfMonthsPayed());
+        user.setEndSubscription(calculateEndSubscription(user));
         userRepository.save(user);
+    }
+
+    private LocalDateTime calculateEndSubscription(User user) {
+            LocalDateTime date = user.getSubscription();
+        System.out.println("Inainte: " + date.getMonthValue());
+            date = date.plusMonths(user.getNumberOfMonthsPayed());
+        System.out.println("Dupa: " + date.getMonthValue());
+            return date;
     }
 
     public void edit(UserDto userDto, Optional<Boolean> isNewSubscription) {
@@ -43,6 +53,7 @@ public class UserService {
               user.setPhoneNumber(userDto.getPhoneNumber());
               user.setSubscription(LocalDateTime.now(ZoneOffset.UTC));
               user.setNumberOfMonthsPayed(userDto.getNumberOfMonthsPayed());
+              user.setEndSubscription(calculateEndSubscription(user));
       } else if(user != null) {
           user.setFirstName(userDto.getFirstName());
           user.setLastName(userDto.getLastName());
@@ -50,6 +61,7 @@ public class UserService {
           user.setEmail(userDto.getEmail());
           user.setPhoneNumber(userDto.getPhoneNumber());
           user.setNumberOfMonthsPayed(userDto.getNumberOfMonthsPayed());
+          user.setEndSubscription(calculateEndSubscription(user));
       }
       userRepository.save(user);
     }
@@ -88,6 +100,7 @@ public class UserService {
         userDto.setSubscription(user.getSubscription());
         userDto.setProfileImageId(user.getProfileImageId());
         userDto.setNumberOfMonthsPayed(user.getNumberOfMonthsPayed());
+        userDto.setEndSubscription(user.getEndSubscription());
         return userDto;
     }
 }

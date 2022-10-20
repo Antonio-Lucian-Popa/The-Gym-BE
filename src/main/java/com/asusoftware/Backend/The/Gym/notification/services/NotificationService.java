@@ -34,7 +34,7 @@ public class NotificationService {
         LocalDate localDate = LocalDate.now();
         userService.findAllEntities().forEach(user -> {
             LocalDateTime date = user.getSubscription();
-            date.plusMonths(user.getNumberOfMonthsPayed());
+            date = date.plusMonths(user.getNumberOfMonthsPayed());
             if(date.getMonthValue() == localDate.getMonthValue() &&
                     date.getYear() == localDate.getYear() &&
                     date.getDayOfMonth() - 1 == localDate.getDayOfMonth()) {

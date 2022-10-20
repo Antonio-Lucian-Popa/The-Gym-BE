@@ -17,7 +17,8 @@ public class BackEndTheGymApplication implements WebMvcConfigurer {
 		registry.addMapping("/**")
 				.allowedOrigins(
 						"http://localhost:4200",
-						"http://localhost:8100"
+						"http://localhost:8100",
+						"https://the-gym-adjud.netlify.app"
 				)
 				.allowedMethods(
 						"GET",

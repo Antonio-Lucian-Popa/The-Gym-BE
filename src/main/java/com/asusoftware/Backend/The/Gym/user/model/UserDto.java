@@ -20,5 +20,6 @@ public class UserDto {
     private String phoneNumber;
     private LocalDateTime subscription;
     private int numberOfMonthsPayed;
+    private LocalDateTime endSubscription;
 
 }
