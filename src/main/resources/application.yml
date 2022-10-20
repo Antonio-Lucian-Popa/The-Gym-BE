@@ -3,10 +3,10 @@ spring:
     multipart:
       max-file-size: 50MB
   datasource:
-    url: jdbc:postgresql://localhost:5432/theGym
+    url: jdbc:postgresql://ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d1k9p4sd7gjm6s
     # driverClassName: org.h2.Driver
-    username: postgres
-    password: password
+    username: pwymbxfmamhbik
+    password: 5371d8d9f9d430d0b4d1e9e5423833194a18714173ba4b2761421dd3ef878c87
   jpa:
     # database-platform: org.hibernate.dialect.H2Dialect
     properties:
