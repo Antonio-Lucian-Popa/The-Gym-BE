@@ -95,6 +95,7 @@ public class UserService {
         userDto.setId(user.getId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
         userDto.setBirthday(user.getBirthday());
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setSubscription(user.getSubscription());
